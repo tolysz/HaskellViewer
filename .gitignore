@@ -1,3 +1,5 @@
 dist/
 *.aiff
-
+.stack-work
+.idea
+*.iml

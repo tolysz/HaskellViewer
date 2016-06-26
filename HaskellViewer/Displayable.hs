@@ -7,7 +7,7 @@
 By default, any Draw() value can be displayed !
 
 -}
-module Displayable(
+module HaskellViewer.Displayable(
       Displayable(..)
     , Rsrc(..)
     , DrawingAction(..)

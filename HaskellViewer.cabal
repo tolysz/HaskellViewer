@@ -16,6 +16,6 @@ build-type:          Simple
 cabal-version:       >=1.8
 
 library
-  exposed-modules:     Displayable, Viewer, Playable
-  other-modules:       AIFF
-  build-depends:       base ==4.6.*, HPDF >=1.4.5, network ==2.4.*, bytestring ==0.10.*
+  exposed-modules:     HaskellViewer.Displayable, HaskellViewer.Viewer, HaskellViewer.Playable
+  other-modules:       HaskellViewer.AIFF
+  build-depends:       base > 4.5 && < 5, HPDF >=1.4.5, network, bytestring

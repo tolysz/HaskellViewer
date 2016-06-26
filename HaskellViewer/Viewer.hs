@@ -1,27 +1,27 @@
 {- | Functions used to communicate with the OS X hViewer
 
 -}
-module Viewer(
+module HaskellViewer.Viewer(
     display
   , viewerSize
   , play
   ) where 
 
 import Graphics.PDF
-import Displayable 
-import Playable
+import HaskellViewer.Displayable
+import HaskellViewer.Playable
 
 import Network
 import qualified Data.ByteString.Lazy.Char8 as L
 import qualified Data.ByteString.Lazy.Builder as B
 import GHC.IO.Handle(hFlush,hClose)
-import AIFF(encodeSound)
+import HaskellViewer.AIFF(encodeSound)
 
 dispCode = L.pack "disp"
 playCode = L.pack "play"
 
 -- | Convert a Displayable into a PDF byetstream
-getPDFStream :: Displayable a b => Int -> Int -> a -> IO L.ByteString
+getPDFStream :: Displayable a b => Int -> Int -> a -> L.ByteString
 getPDFStream width height drawingCode = do
     let rect = PDFRect 0 0 width height
     let (aPdfValue, drawAction) = drawing drawingCode 
@@ -45,7 +45,7 @@ display :: Displayable a b
         -> IO ()
 display d = do 
   let (w,h) = viewerSize
-  stream <- getPDFStream w h d
+  let stream = getPDFStream w h d
   sendStream 9000 (L.append dispCode stream)
 
 play :: Playable a 

@@ -1,4 +1,4 @@
-module AIFF(
+module HaskellViewer.AIFF(
     encodeSound
   ) where 
 
